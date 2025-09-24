@@ -28,3 +28,7 @@ CSS
 
 
 ## OUTPUT ##
+<img width="1900" height="815" alt="Image" src="https://github.com/user-attachments/assets/902787a5-5e72-4916-bbd9-80dd32ab108f" />
+<img width="1902" height="963" alt="Image" src="https://github.com/user-attachments/assets/67da00e3-dd2c-4799-aa63-3b7791eb555b" />
+<img width="1907" height="818" alt="Image" src="https://github.com/user-attachments/assets/a862cd8a-1dff-4c3c-bbef-b12e3a448f3b" />
+<img width="1904" height="787" alt="Image" src="https://github.com/user-attachments/assets/040e81be-3498-4640-a55e-8cae405afa05" />
