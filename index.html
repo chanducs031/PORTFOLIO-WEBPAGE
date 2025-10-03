@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Chandu KR | Developer Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome for Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Internal Styles -->
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 20px;
+    }
+
+    header {
+      background: rgba(34, 34, 34, 0.95);
+      color: #fff;
+      padding: 20px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(10px);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .logo {
+      font-size: 28px;
+      font-weight: 700;
+    }
+
+    .logo span {
+      color: #00bcd4;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 20px;
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+      position: relative;
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background-color: #00bcd4;
+      transition: width 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      color: #00bcd4;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .home-section {
+      background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
+      padding: 100px 0;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .home-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      z-index: 2;
+    }
+
+    .home-text {
+      max-width: 800px;
+    }
+
+    .home-text h2 {
+        font-size: 2.8rem;
+        margin-bottom: 1rem;
+    }
+
+    .home-text h2 span {
+      color: #00bcd4;
+      position: relative;
+    }
+
+    .home-text p {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #00bcd4;
+      color: #fff;
+      padding: 12px 24px;
+      text-decoration: none;
+      border-radius: 30px;
+      margin-top: 20px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+      font-weight: 600;
+    }
+
+    .btn:hover {
+        background-color: #0097a7;
+        transform: translateY(-3px);
+        box-shadow: 0 6px 20px rgba(0, 188, 212, 0.4);
+    }
+
+    .profile-photo {
+      width: 220px;
+      height: 220px;
+      border-radius: 50%;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+      margin-bottom: 2rem;
+      border: 5px solid #fff;
+      transition: all 0.5s;
+      object-fit: cover;
+    }
+
+    .profile-photo:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 40px rgba(0, 0, 0, 0.2);
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 30px;
+    }
+
+    .social-link {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      color: #00bcd4;
+      font-size: 1.5rem;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .social-link:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+      color: #fff;
+      background: #00bcd4;
+    }
+
+    .about-section,
+    .projects-section,
+    .skills-section,
+    .contact-section {
+      padding: 100px 0;
+      background: #fff;
+      position: relative;
+    }
+
+    .section-title {
+        text-align: center;
+        margin-bottom: 3rem;
+        font-size: 2.5rem;
+        position: relative;
+        padding-bottom: 15px;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: #00bcd4;
+      border-radius: 2px;
+    }
+
+    .about-content {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 3rem;
+        align-items: center;
+    }
+
+    .about-text {
+        flex: 1 1 60%;
+    }
+
+    .about-photo {
+        flex: 1 1 30%;
+        text-align: center;
+        position: relative;
+    }
+    
+    .about-photo img {
+        width: 100%;
+        max-width: 350px;
+        border-radius: 15px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        transition: all 0.5s;
+    }
+
+    .about-photo img:hover {
+      transform: rotate(2deg) scale(1.03);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+
+    .skill {
+      text-align: center;
+      padding: 25px 15px;
+      border-radius: 15px;
+      background: #f9f9f9;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .skill:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+    }
+
+    .skill img {
+      width: 60px;
+      height: 60px;
+      margin-bottom: 15px;
+      object-fit: contain;
+    }
+
+    .projects-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+    }
+
+    .project-card {
+      padding: 30px;
+      background: #f9f9f9;
+      border-radius: 15px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 5px;
+      height: 0;
+      background: #00bcd4;
+      transition: height 0.3s;
+    }
+
+    .project-card:hover::before {
+      height: 100%;
+    }
+
+    .project-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    }
+
+    .project-icon {
+      font-size: 40px;
+      color: #00bcd4;
+      margin-bottom: 20px;
+    }
+    
+    .project-card h3 {
+        margin-bottom: 1rem;
+        font-size: 1.4rem;
+    }
+    
+    .project-card p {
+      flex-grow: 1;
+      margin-bottom: 1.5rem;
+    }
+
+    .project-links {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: auto;
+    }
+
+    .project-link {
+      display: inline-block;
+      padding: 10px 20px;
+      background: #00bcd4;
+      color: white;
+      text-decoration: none;
+      border-radius: 30px;
+      font-weight: 500;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 188, 212, 0.3);
+    }
+
+    .project-link:hover {
+      background: #0097a7;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0, 188, 212, 0.4);
+    }
+
+    .skill-bar {
+      margin: 25px 0;
+    }
+
+    .skill-bar p {
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .skill-bar span {
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .bar {
+      width: 100%;
+      height: 12px;
+      background: #e0e0e0;
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .fill {
+      height: 100%;
+      background: linear-gradient(90deg, #00bcd4, #0097a7);
+      border-radius: 10px;
+      position: relative;
+      transition: width 1.5s ease-in-out;
+    }
+
+    .fill::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      bottom: 0;
+      right: 0;
+      background-image: linear-gradient(
+        -45deg, 
+        rgba(255, 255, 255, 0.2) 25%, 
+        transparent 25%, 
+        transparent 50%, 
+        rgba(255, 255, 255, 0.2) 50%, 
+        rgba(255, 255, 255, 0.2) 75%, 
+        transparent 75%, 
+        transparent
+      );
+      z-index: 1;
+      background-size: 20px 20px;
+      border-radius: 10px;
+      overflow: hidden;
+      animation: move 2s linear infinite;
+    }
+
+    @keyframes move {
+      0% {
+        background-position: 0 0;
+      }
+      100% {
+        background-position: 20px 20px;
+      }
+    }
+
+    .contact-info {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .contact-info p {
+      margin-bottom: 15px;
+      font-size: 1.1rem;
+    }
+
+    .contact-info a {
+      color: #00bcd4;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .contact-info a:hover {
+      color: #0097a7;
+      text-decoration: underline;
+    }
+
+    footer {
+      text-align: center;
+      background: #222;
+      color: #fff;
+      padding: 40px 20px;
+    }
+
+    .footer-social {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .footer-social a {
+      color: #fff;
+      font-size: 1.5rem;
+      transition: all 0.3s;
+    }
+
+    .footer-social a:hover {
+      color: #00bcd4;
+      transform: translateY(-5px);
+    }
+
+    /* Animation for elements on scroll */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Background shapes for creative design */
+    .shape {
+      position: absolute;
+      z-index: 1;
+    }
+
+    .shape-1 {
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      background: rgba(0, 188, 212, 0.1);
+      top: 10%;
+      left: 5%;
+    }
+
+    .shape-2 {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      background: rgba(0, 188, 212, 0.1);
+      bottom: 10%;
+      right: 5%;
+    }
+
+    .shape-3 {
+      width: 100px;
+      height: 100px;
+      border: 2px solid rgba(0, 188, 212, 0.2);
+      top: 20%;
+      right: 10%;
+      transform: rotate(45deg);
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .nav-container {
+        flex-direction: column;
+        gap: 15px;
+      }
+      
+      nav ul {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      
+      .home-text h2 {
+        font-size: 2.2rem;
+      }
+      
+      .about-content {
+        flex-direction: column-reverse;
+      }
+      
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .skill {
+        padding: 20px 10px;
+      }
+      
+      .project-links {
+        flex-direction: column;
+        gap: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="container nav-container">
+      <h1 class="logo">Chandu<span>KR</span></h1>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section id="home" class="home-section">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="container home-container">
+      <div class="home-photo">
+        <img src="profile 2.jpg" alt="Chandu KR" class="profile-photo fade-in">
+      <div class="home-text">
+        <h2>Hello, I'm <span>Chandu KR</span></h2>
+        <p>
+          A passionate Front-End Developer dedicated to building responsive, engaging, and highly intuitive web experiences. 
+          I thrive on transforming creative visions into pixel-perfect realities, focusing on clean design and seamless user interfaces.
+        </p>
+        <a href="#projects" class="btn">View My Work</a>
+        
+        <!-- Social Links -->
+        <div class="social-links">
+          <a href="https://www.linkedin.com/in/chandu-kr-0b8bb2272" target="_blank" class="social-link">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/chanducs031" target="_blank" class="social-link">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://github.com/chanducs031/resume/blob/main/Chandu%20kr%20_%20CV%20_CSE.pdf" target="_blank" class="social-link">
+            <i class="fas fa-file-pdf"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <div class="container">
+      <h2 class="section-title fade-in">About Me</h2>
+      <div class="about-content">
+          <div class="about-text fade-in">
+            <p>
+              I'm a self-taught web developer focused on building responsive, accessible, and beautiful websites using modern tech like HTML, CSS, JavaScript, and React. 
+              My journey into web development began with curiosity and grew into a deep passion for creating clean, user-centered interfaces.
+            </p>
+            <p>
+              Beyond just coding, I am a creative problem-solver who enjoys transforming complex challenges into elegant, user-friendly digital solutions.
+            </p>
+            <p>
+              I believe in the power of clean, maintainable code and a meticulous approach to design, ensuring every project is not only functional but also a joy to use. 
+            </p>
+          </div>
+          <div class="about-photo fade-in">
+              <img src="profile.jpg" alt="Developer working">
+          </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects-section" style="background-color: #f5f5f5;">
+    <div class="container">
+      <h2 class="section-title fade-in">Projects</h2>
+      <div class="projects-grid">
+        <div class="project-card fade-in">
+          <i class="fas fa-globe project-icon"></i>
+          <h3>Article Summarizer and Translator</h3>
+          <p>This project utilizes advanced natural language processing techniques to summarize articles and translate text between multiple languages, providing users with concise and accurate information at their fingertips.</p>
+          <div class="project-links">
+            <a href="https://github.com/chanducs031" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-card fade-in">
+          <i class="fas fa-tasks project-icon"></i>
+          <h3>Automated Resume Screening and Ranking Using AI</h3>
+          <p>Leveraging AI algorithms, this project automates the process of resume screening and ranking, significantly reducing the time and effort required for HR teams to identify top candidates.</p>
+          <div class="project-links">
+            <a href="https://github.com/chanducs031" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-card fade-in">
+          <i class="fas fa-question-circle project-icon"></i>
+          <h3>Interactive Quiz Application</h3>
+          <p>This project is an interactive quiz application that leverages AI to provide personalized quiz experiences, adapting questions based on user performance and preferences.</p>
+          <div class="project-links">
+            <a href="https://github.com/chanducs031/-INTERACTIVE-QUIZ-APPLICATION/blob/main/README.md" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-card fade-in">
+          <i class="fas fa-question-circle project-icon"></i>
+          <h3>E-learning Platform</h3>
+          <p>This project is an e-learning platform that leverages AI to provide personalized learning experiences, adapting content based on user performance and preferences.</p>
+          <div class="project-links">
+            <a href="https://github.com/chanducs031/-E-LEARNING-PLATFORM-UI" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+        <div class="project-card fade-in">
+          <i class="fas fa-blog project-icon"></i>
+          <h3>Portfolio Website</h3>
+          <p>This project showcases a modern portfolio website built with HTML, CSS, and JavaScript, emphasizing responsive design and elegant typography to deliver an optimal user experience on any device.</p>
+          <div class="project-links">
+            <a href="https://github.com/chanducs031" target="_blank" class="project-link">
+              <i class="fab fa-github"></i> View on GitHub
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="skills-section">
+    <div class="container">
+      <h2 class="section-title fade-in">Skills</h2>
+
+      <div class="skill-bar fade-in">
+        <p>Python <span>90%</span></p>
+        <div class="bar"><div class="fill" style="width: 90%"></div></div>
+      </div>
+      <div class="skill-bar fade-in">
+        <p>Java <span>60%</span></p>
+        <div class="bar"><div class="fill" style="width: 60%"></div></div>
+      </div>
+      <div class="skill-bar fade-in">
+        <p>JavaScript <span>55%</span></p>
+        <div class="bar"><div class="fill" style="width: 55%"></div></div>
+      </div>
+      <div class="skill-bar fade-in">
+        <p>HTML <span>85%</span></p>
+        <div class="bar"><div class="fill" style="width: 85%"></div></div>
+      </div>
+      <div class="skill-bar fade-in">
+        <p>CSS <span>95%</span></p>
+        <div class="bar"><div class="fill" style="width: 95%"></div></div>
+      </div>
+      <div class="skill-bar fade-in">
+        <p>SQL <span>78%</span></p>
+        <div class="bar"><div class="fill" style="width: 78%"></div></div>
+      </div>
+      <div class="skill-bar fade-in">
+        <p>C <span>82%</span></p>
+        <div class="bar"><div class="fill" style="width: 82%"></div></div>
+      </div>
+      <div class="skills-grid">
+        <div class="skill fade-in"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python"><p>Python</p></div>
+        <div class="skill fade-in"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java"><p>Java</p></div>
+        <div class="skill fade-in"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C"><p>C</p></div>
+        <div class="skill fade-in"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" alt="HTML"><p>HTML</p></div>
+        <div class="skill fade-in"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS"><p>CSS</p></div>
+        <div class="skill fade-in"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript"><p>JavaScript</p></div>
+        <div class="skill fade-in"><img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/mysql/mysql-original.svg" alt="SQL"><p>SQL</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact-section" style="background-color: #e3f2fd;">
+    <div class="shape shape-3"></div>
+    <div class="container">
+      <h2 class="section-title fade-in">Contact Me</h2>
+      <div class="contact-info fade-in">
+        <p>I'm always open to discussing new projects, creative ideas, or opportunities to be part of an amazing team. Feel free to reach out!</p>
+        <p>Email: <a href="mailto:chandukr046@gmail.com">chandukr046@gmail.com</a></p>
+        <p>Phone: +91-8867083170</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="footer-social">
+      <a href="www.linkedin.com/in/chandu-kr-0b8bb2272" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+      <a href="https://github.com/chanducs031" target="_blank"><i class="fab fa-github"></i></a>
+      <a href="https://github.com/chanducs031/resume/blob/main/Chandu%20kr%20_%20CV%20_CSE.pdf" target="_blank"> <i class="fas fa-file-pdf"></i></a>
+    </div>
+    <p>&copy; 2025 Chandu KR. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Fade-in animation on scroll
+    document.addEventListener('DOMContentLoaded', function() {
+      const fadeElements = document.querySelectorAll('.fade-in');
+      
+      const fadeInOptions = {
+        threshold: 0.3,
+        rootMargin: "0px 0px -50px 0px"
+      };
+      
+      const fadeInObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, fadeInOptions);
+      
+      fadeElements.forEach(element => {
+        fadeInObserver.observe(element);
+      });
+      
+      // Animate skill bars on scroll
+      const skillBars = document.querySelectorAll('.fill');
+      
+      const skillBarOptions = {
+        threshold: 0.5
+      };
+      
+      const skillBarObserver = new IntersectionObserver(function(entries, observer) {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const width = entry.target.style.width;
+            entry.target.style.width = '0';
+            setTimeout(() => {
+              entry.target.style.width = width;
+            }, 300);
+            observer.unobserve(entry.target);
+          }
+        });
+      }, skillBarOptions);
+      
+      skillBars.forEach(bar => {
+        skillBarObserver.observe(bar);
+      });
+    });
+  </script>
+
+</body>
+</html>
