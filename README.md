@@ -41,6 +41,7 @@ Bootstrap 5 (or React/JavaScript if you used them)
 Font Awesome Icons
 
 ## OUTPUT ##
-<img width="1904" height="981" alt="Image" src="https://github.com/user-attachments/assets/3bb57a3a-0ff8-46ae-a578-294f4ebf628f" />
-<img width="1904" height="986" alt="Image" src="https://github.com/user-attachments/assets/490c4c44-0a00-4e2c-bcb3-39c9ca9fdbfa" />
-<img width="1918" height="988" alt="Image" src="https://github.com/user-attachments/assets/71b2c567-158f-49ed-92d5-2ff703bde93d" />
+<img width="1902" height="963" alt="Image" src="https://github.com/user-attachments/assets/5f392459-58b6-4768-823f-d17978e5e9f7" />
+<img width="1907" height="818" alt="Image" src="https://github.com/user-attachments/assets/4317ea95-3c16-41d6-bd02-fcded95ce91d" />
+<img width="1904" height="787" alt="Image" src="https://github.com/user-attachments/assets/323709d0-09da-49f2-a5f3-989a4eb99f27" />
+<img width="1900" height="815" alt="Image" src="https://github.com/user-attachments/assets/20cc00fa-94ae-458c-aa56-90a4ec1640cd" />
